@@ -13877,11 +13877,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/Users/xiaozhujin/Projects/MysqlTest/MysqlTest/MysqlTest.csproj",
+      "projectUniqueName": "/Users/xiaozhujin/Projects/MysqlTest 2/CSC770Project/MysqlTest/MysqlTest.csproj",
       "projectName": "MysqlTest",
-      "projectPath": "/Users/xiaozhujin/Projects/MysqlTest/MysqlTest/MysqlTest.csproj",
+      "projectPath": "/Users/xiaozhujin/Projects/MysqlTest 2/CSC770Project/MysqlTest/MysqlTest.csproj",
       "packagesPath": "/Users/xiaozhujin/.nuget/packages/",
-      "outputPath": "/Users/xiaozhujin/Projects/MysqlTest/MysqlTest/obj",
+      "outputPath": "/Users/xiaozhujin/Projects/MysqlTest 2/CSC770Project/MysqlTest/obj",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "/usr/local/share/dotnet/sdk/NuGetFallbackFolder"
