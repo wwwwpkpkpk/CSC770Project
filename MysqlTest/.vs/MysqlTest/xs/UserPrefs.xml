@@ -1,0 +1,20 @@
+﻿<Properties StartupConfiguration="{374D51C6-5AAD-4304-866A-1494528386DB}|Default">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Views/Home/Signin.cshtml">
+    <Files>
+      <File FileName="appsettings.json" Line="1" Column="1" />
+      <File FileName="Models/Customer.cs" Line="1" Column="1" />
+      <File FileName="Models/Data.cs" Line="40" Column="72" />
+      <File FileName="Models/user_account.cs" Line="1" Column="1" />
+      <File FileName="Controllers/HomeController.cs" Line="1" Column="1" />
+      <File FileName="Views/Home/Signup.cshtml" Line="1" Column="1" />
+      <File FileName="Views/Home/Signin.cshtml" Line="1" Column="1" />
+    </Files>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MultiItemStartupConfigurations />
+  <MonoDevelop.Ide.ItemProperties.MysqlTest PreferredExecutionTarget="MonoDevelop.Default" />
+</Properties>
