@@ -13871,23 +13871,23 @@
     ]
   },
   "packageFolders": {
-    "/Users/xiaozhujin/.nuget/packages/": {},
+    "/Users/choisoohyeon/.nuget/packages/": {},
     "/usr/local/share/dotnet/sdk/NuGetFallbackFolder": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/Users/xiaozhujin/Projects/MysqlTest/MysqlTest/MysqlTest.csproj",
+      "projectUniqueName": "/Users/choisoohyeon/Documents/CSC770Project/MysqlTest/MysqlTest.csproj",
       "projectName": "MysqlTest",
-      "projectPath": "/Users/xiaozhujin/Projects/MysqlTest/MysqlTest/MysqlTest.csproj",
-      "packagesPath": "/Users/xiaozhujin/.nuget/packages/",
-      "outputPath": "/Users/xiaozhujin/Projects/MysqlTest/MysqlTest/obj",
+      "projectPath": "/Users/choisoohyeon/Documents/CSC770Project/MysqlTest/MysqlTest.csproj",
+      "packagesPath": "/Users/choisoohyeon/.nuget/packages/",
+      "outputPath": "/Users/choisoohyeon/Documents/CSC770Project/MysqlTest/obj",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "/usr/local/share/dotnet/sdk/NuGetFallbackFolder"
       ],
       "configFilePaths": [
-        "/Users/xiaozhujin/.config/NuGet/NuGet.Config"
+        "/Users/choisoohyeon/.config/NuGet/NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "netcoreapp2.1"
