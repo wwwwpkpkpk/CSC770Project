@@ -1,0 +1,124 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Diagnostics;
+using System.Linq;
+using System.Threading.Tasks;
+using Microsoft.AspNetCore.Mvc;
+using MysqlTest.Models;
+using MySql.Data;
+using MySql.Data.MySqlClient;
+
+namespace MysqlTest.Controllers
+{
+    public class HomeController : Controller
+    {
+        public HomeController() 
+        {
+        }
+
+        public IActionResult Index()
+        {
+            return View();
+        }
+
+        public ActionResult Signup()
+        {
+            return View();
+        }
+
+        //Get the registration form
+        [HttpPost]
+        public ActionResult Signup(string newEmail, string newFirstName, string newLastName, string newPwd, string newRPwd)
+        {
+            var dbCon = DBConnection.Instance();
+            dbCon.DatabaseName = "test";
+            bool duplicate = false;
+            if (dbCon.IsConnect())
+            {
+                //Check email duplication
+                dbCon.Open();
+                string query = "SELECT email, firstName, lastName FROM Customer";
+                var cmd = new MySqlCommand(query, dbCon.Connection);
+                var reader = cmd.ExecuteReader();
+                Debug.WriteLine(reader.FieldCount);
+                while (reader.HasRows)
+                {
+                    while (reader.Read())
+                    {
+                        string estEmail = reader.GetString(0);
+                        if (newEmail == estEmail)
+                        {
+                            duplicate = true;
+                            break;
+                        }
+                    }
+                    reader.NextResult();
+                }
+                dbCon.Close();
+            }
+
+            if (duplicate == true)
+            {
+                return View("Errors");
+            }
+            else
+            {
+                dbCon.Open();
+                if (newPwd == newRPwd)
+                {
+                    //Insert data to datbase
+                    var cmdInsert = new MySqlCommand("INSERT INTO Customer(email, firstName, lastName, pwd) Values (?email, ?firstName, ?lastName, ?pwd);", dbCon.Connection);
+                    cmdInsert.Parameters.AddWithValue("?email", newEmail);
+                    cmdInsert.Parameters.AddWithValue("?firstName", newFirstName);
+                    cmdInsert.Parameters.AddWithValue("?lastName", newLastName);
+                    cmdInsert.Parameters.AddWithValue("?pwd", newPwd);
+                    cmdInsert.ExecuteNonQuery();
+                }
+                dbCon.Close();
+                ViewData["Message"] = "Register Success";
+                return View();
+            }
+        }
+
+        public ActionResult Errors() {
+            return View();
+        }
+
+        //Get the login form
+        [HttpGet]
+        public ActionResult Login()
+        {
+            return View();
+        }
+
+        public ActionResult Order()
+        {
+            return View();
+        }
+
+        public IActionResult About()
+        {
+            ViewData["Message"] = "Your application description page.";
+
+            return View();
+        }
+
+        public IActionResult Contact()
+        {
+            ViewData["Message"] = "Your contact page.";
+
+            return View();
+        }
+
+        public IActionResult Privacy()
+        {
+            return View();
+        }
+
+        [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
+        public IActionResult Error()
+        {
+            return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+        }
+    }
+}
