@@ -8,10 +8,13 @@ using MysqlTest.Models;
 using MySql.Data;
 using MySql.Data.MySqlClient;
 
+
+
 namespace MysqlTest.Controllers
 {
     public class HomeController : Controller
     {
+
         public HomeController() 
         {
         }
@@ -21,32 +24,55 @@ namespace MysqlTest.Controllers
             return View();
         }
 
-        public ActionResult Signup()
+        public ActionResult Signin()
         {
             return View();
         }
 
+        public ActionResult Signup()
+        {
+            return View();
+        }
+        public ActionResult Order()
+        {
+            return View();
+        }
+        public ActionResult Reservation()
+        {
+            return View();
+        }
+        public ActionResult Advertisement()
+        {
+            return View();
+        }
+        public ActionResult Inventory()
+        {
+            return View();
+        }
+
+
         //Get the registration form
         [HttpPost]
-        public ActionResult Signup(string newEmail, string newFirstName, string newLastName, string newPwd, string newRPwd)
+        public ActionResult Signup(string newUsername, string newEmail, string newPn1, string newPn2, string newPn3, string newFname, string newLname,string newPwd, string newRPwd)
         {
             var dbCon = DBConnection.Instance();
-            dbCon.DatabaseName = "test";
+            dbCon.DatabaseName = "drunkencode";
             bool duplicate = false;
             if (dbCon.IsConnect())
             {
                 //Check email duplication
                 dbCon.Open();
-                string query = "SELECT email, firstName, lastName FROM Customer";
+                string query = "SELECT username, email, firstName, lastName FROM user_account";
                 var cmd = new MySqlCommand(query, dbCon.Connection);
                 var reader = cmd.ExecuteReader();
                 Debug.WriteLine(reader.FieldCount);
+
                 while (reader.HasRows)
                 {
                     while (reader.Read())
                     {
-                        string estEmail = reader.GetString(0);
-                        if (newEmail == estEmail)
+                        string estUsername = reader.GetString(0);
+                        if (newUsername == estUsername)
                         {
                             duplicate = true;
                             break;
@@ -59,6 +85,7 @@ namespace MysqlTest.Controllers
 
             if (duplicate == true)
             {
+     
                 return View("Errors");
             }
             else
@@ -67,15 +94,23 @@ namespace MysqlTest.Controllers
                 if (newPwd == newRPwd)
                 {
                     //Insert data to datbase
-                    var cmdInsert = new MySqlCommand("INSERT INTO Customer(email, firstName, lastName, pwd) Values (?email, ?firstName, ?lastName, ?pwd);", dbCon.Connection);
+                    string pnum = newPn1 + "-" + newPn2 + "-" + newPn3;
+                    var cmdInsert = new MySqlCommand("INSERT INTO user_account(username, email, firstName, lastName, fpassword, rpassword, phoneNum) Values (?username, ?email, ?firstName, ?lastName, ?fpassword, ?rpassword, ?phoneNum);", dbCon.Connection);
+                    cmdInsert.Parameters.AddWithValue("?username", newUsername);
                     cmdInsert.Parameters.AddWithValue("?email", newEmail);
-                    cmdInsert.Parameters.AddWithValue("?firstName", newFirstName);
-                    cmdInsert.Parameters.AddWithValue("?lastName", newLastName);
-                    cmdInsert.Parameters.AddWithValue("?pwd", newPwd);
+                    cmdInsert.Parameters.AddWithValue("?firstName", newFname);
+                    cmdInsert.Parameters.AddWithValue("?lastName", newLname);
+                    cmdInsert.Parameters.AddWithValue("?fpassword", newPwd);
+                    cmdInsert.Parameters.AddWithValue("?rpassword", newRPwd);
+                    cmdInsert.Parameters.AddWithValue("?phoneNum", pnum);
                     cmdInsert.ExecuteNonQuery();
                 }
                 dbCon.Close();
-                ViewData["Message"] = "Register Success";
+                //message box
+                TempData["testmsg"] = "true";
+                //return RedirectToAction("Signin");
+                
+
                 return View();
             }
         }
@@ -84,6 +119,7 @@ namespace MysqlTest.Controllers
             return View();
         }
 
+
         //Get the login form
         [HttpGet]
         public ActionResult Login()
@@ -91,10 +127,6 @@ namespace MysqlTest.Controllers
             return View();
         }
 
-        public ActionResult Order()
-        {
-            return View();
-        }
 
         public IActionResult About()
         {

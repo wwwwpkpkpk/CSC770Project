@@ -1,4 +1,4 @@
-@model MysqlTest.Models.Customer
+﻿@model MysqlTest.Models.Customer
 @{
     ViewData["Title"] = "Signin";
 }
@@ -70,23 +70,23 @@
                             <ul>
                                 <li><a asp-area="" asp-controller="Home" asp-action="Index">Home</a></li>
                                 <li class="has-dropdown">
-                                    <a href="order.html">Order</a>
+                                    <a asp-area="" asp-controller="Home" asp-action="Order">Order</a>
                                     <ul class="dropdown">
-                                        <li><a href="#">For Here</a></li>
-                                        <li><a href="#">To Go</a></li>
+                                        <li><a asp-area="" asp-controller="Home" asp-action="Forhere">For Here</a></li>
+                                        <li><a asp-area="" asp-controller="Home" asp-action="ToGo">To Go</a></li>
                                     </ul>
                                 </li>
-                                <li><a href="reservation.html">Reservation</a></li>
+                                <li><a asp-area="" asp-controller="Home" asp-action="Reservation">Reservation</a></li>
                                 <li class="has-dropdown">
-                                    <a href="advertisement.html">Advertisement</a>
+                                    <a asp-area="" asp-controller="Home" asp-action="Advertisement">Advertisement</a>
                                     <ul class="dropdown">
-                                        <li><a href="#">Event</a></li>
-                                        <li><a href="#">Survey</a></li>
+                                        <li><a asp-area="" asp-controller="Home" asp-action="Event">Event</a></li>
+                                        <li><a asp-area="" asp-controller="Home" asp-action="Survey">Survey</a></li>
                                     </ul>
                                 </li>
-                                <li><a href="Inventory.html">Inventory</a></li>
-                                <li><a href="contact.html">Contact</a></li>
-                                <li class="btn-cta"><a href="signin.html"><span>Sign in</span></a></li>
+                                <li><a asp-area="" asp-controller="Home" asp-action="Inventory">Inventory</a></li>
+                                <li><a asp-area="" asp-controller="Home" asp-action="Contact">Contact</a></li>
+                                <li class="btn-cta"><a asp-area="" asp-controller="Home" asp-action="Signin"><span>Sign in</span></a></li>
                             </ul>
                         </div>
                     </div>
@@ -104,37 +104,32 @@
                         <h2>Sign in</h2>
                         <h4>Sign in to make faster reservations and enjoy exclusive member features.</h4>
 
-                        <div><h5>If you don't have an account click <a class="url"><a href="signup.html">here</a> </h5></div>
+                        <div><h5>If you don't have an account click <a asp-area="" asp-controller="Home" asp-action="Signup">here</a> </h5></div>
 
-
-
-                       
-
-                        @using (Html.BeginForm()) <h1> I love github </h1>
+                        @using (Html.BeginForm()) 
                         {
                             @Html.ValidationSummary(true, "Login failed. Check your login details");
                             <div class="row form-group">
-                                <div class="col-md-12">
-                                    <label for="email">Email</label>
-                                    @Html.EditorFor(model => model.usrname)
-                                </div>
-                            </div>
-                            <div class="row form-group">
-                                <div class="col-md-12">
-                                    <label for="password">Password</label>
-                                    <input type="password" name="fpassword" class="form-control" placeholder="Password">
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <input type="submit" value="Sign in" class="btn btn-primary">
-                            </div>
+							    <div class="col-md-12">
+								    <label for="username">Username</label>
+								    <input type = "text" name="username" class="form-control" placeholder="Username">
+							    </div>
+						    </div>
+						    <div class="row form-group">
+							    <div class="col-md-12">
+								    <label for="password">Password</label>
+								    <input type = "password" name="fpassword" class="form-control" placeholder="Password">
+							    </div>
+						    </div>
+						    <div class="form-group">
+							    <input type = "submit" value="Sign in" class="btn btn-primary">
+						    </div>
                         }
                     </div>
                 </div>
 
             </div>
         </div>
-
 
         <footer id="fh5co-footer" role="contentinfo">
             <div class="container">
