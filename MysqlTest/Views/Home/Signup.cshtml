@@ -99,70 +99,75 @@
                     <div class="col-md-9 animate-box">
                         <h3>Create Online Account</h3>
                         <h4>Complete the form below to create your IR online account and password.</h4>
-                        @if (TempData["testmsg"] != null)
-                        {
-                            <script type="text/javascript">
-                                alert("Welcome to Join Us, please Signin now!");
-                            </script>
-                            <script>location.replace('../../Signin');</script>
+                        
 
-
-                        }
-                        else
+                        @using (Html.BeginForm("Signup", "Home", FormMethod.Post))
                         {
-                            @using (Html.BeginForm("Signup", "Home", FormMethod.Post))
+                            @if (TempData["testmsg"] == "username")
                             {
-                                <div class="row form-group">
-                                    <div class="col-md-12">
-                                        <label for="Username">Username</label>
-                                        <input type="text" name="newUsername" id="newUsername" class="form-control" placeholder="Your username">
-                                    </div>
-                                </div>
-                                <div class="row form-group">
-                                    <div class="col-md-6">
-                                        <label for="fname">Email</label>
-                                        <input type="email" name="newEmail" id="newEmail" class="form-control" placeholder="Your email address">
-                                    </div>
-                                    <div class="col-md-2">
-                                        <label for="lname">Phone number</label>
-                                        <input type="text" name="newPn1" id="newPn1" class="form-control" placeholder="###">
-                                    </div>
-                                    <div class="col-md-2">
-                                        <label for="lname"></label>
-                                        <input type="text" name="newPn2" id="newPn2" class="form-control" placeholder="###">
-                                    </div>
-                                    <div class="col-md-2">
-                                        <label for="lname"></label>
-                                        <input type="text" name="newPn3" id="newPn3" class="form-control" placeholder="####">
-                                    </div>
-                                </div>
 
-                                <div class="row form-group">
-                                    <div class="col-md-6">
-                                        <label for="fname">First Name</label>
-                                        <input type="text" name="newFname" id="newFname" class="form-control" placeholder="Your first name">
-                                    </div>
-                                    <div class="col-md-6">
-                                        <label for="lname">Last Name</label>
-                                        <input type="text" name="newLname" id="newLname" class="form-control" placeholder="Your last name">
-                                    </div>
-                                </div>
-                                <div class="row form-group">
-                                    <div class="col-md-6">
-                                        <label for="password">Password</label>
-                                        <input type="password" name="newPwd" id="newPwd" class="form-control" placeholder="Password">
-                                    </div>
-                                    <div class="col-md-6">
-                                        <label for="rpassword">Re-Enter Password</label>
-                                        <input type="password" name="newRPwd" id="newRPwd" class="form-control" placeholder="Re-enter Password">
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <p align="right">
-                                        <input type="submit" value="Create" class="btn btn-primary">
-                                    </p>
-                                </div>
+                                <script type="text/javascript">
+                                    alert("Username is already taken by another user! Please, use other username");
+                                </script>
+
                             }
+                            @if (TempData["testmsg"] == "password")
+                            {
+                                <script type="text/javascript">
+                                    alert("Passwords are not matched! Please, match your password");
+                                </script>
+                            }
+                            <div class="row form-group">
+                                <div class="col-md-12">
+                                    <label for="Username">Username</label>
+                                    <input type="text" name="newUsername" id="newUsername" class="form-control" placeholder="Your username">
+                                </div>
+                            </div>
+                            <div class="row form-group">
+                                <div class="col-md-6">
+                                    <label for="email">Email</label>
+                                    <input type="email" name="newEmail" id="newEmail" class="form-control" placeholder="Your email address">
+                                </div>
+                                <div class="col-md-2">
+                                    <label for="p1">Phone number</label>
+                                    <input type="text" name="newPn1" id="newPn1" class="form-control" placeholder="###">
+                                </div>
+                                <div class="col-md-2">
+                                    <label for="p2"></label>
+                                    <input type="text" name="newPn2" id="newPn2" class="form-control" placeholder="###">
+                                </div>
+                                <div class="col-md-2">
+                                    <label for="p3"></label>
+                                    <input type="text" name="newPn3" id="newPn3" class="form-control" placeholder="####">
+                                </div>
+                            </div>
+
+                            <div class="row form-group">
+                                <div class="col-md-6">
+                                    <label for="fname">First Name</label>
+                                    <input type="text" name="newFname" id="newFname" class="form-control" placeholder="Your first name">
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="lname">Last Name</label>
+                                    <input type="text" name="newLname" id="newLname" class="form-control" placeholder="Your last name">
+                                </div>
+                            </div>
+                            <div class="row form-group">
+                                <div class="col-md-6">
+                                    <label for="password">Password</label>
+                                    <input type="password" name="newPwd" id="newPwd" class="form-control" placeholder="Password">
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="rpassword">Re-Enter Password</label>
+                                    <input type="password" name="newRPwd" id="newRPwd" class="form-control" placeholder="Re-enter Password">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <p align="right">
+                                    <input type="submit" value="Create" class="btn btn-primary">
+                                </p>
+                            </div>
+
                         }
                     </div>
                 </div>
