@@ -62,7 +62,7 @@ namespace MysqlTest.Controllers
             {
                 //Check email duplication
                 dbCon.Open();
-                string query = "SELECT username, email, firstName, lastName FROM user_account";
+                string query = "SELECT username FROM user_account";
                 var cmd = new MySqlCommand(query, dbCon.Connection);
                 var reader = cmd.ExecuteReader();
                 Debug.WriteLine(reader.FieldCount);
@@ -82,11 +82,15 @@ namespace MysqlTest.Controllers
                 }
                 dbCon.Close();
             }
-
             if (duplicate == true)
             {
-     
-                return View("Errors");
+                TempData["testmsg"] = "username";
+                return RedirectToAction("Signup");
+            }
+            else if(newPwd != newRPwd)
+            {
+                TempData["testmsg"] = "password";
+                return RedirectToAction("Signup");
             }
             else
             {
@@ -106,12 +110,8 @@ namespace MysqlTest.Controllers
                     cmdInsert.ExecuteNonQuery();
                 }
                 dbCon.Close();
-                //message box
-                TempData["testmsg"] = "true";
-                //return RedirectToAction("Signin");
+                return RedirectToAction("Signin");
                 
-
-                return View();
             }
         }
 
