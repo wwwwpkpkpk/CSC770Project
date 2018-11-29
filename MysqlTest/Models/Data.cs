@@ -37,7 +37,7 @@ namespace MysqlTest
             {
                 if (string.IsNullOrEmpty(DatabaseName))
                     return false;
-                string connstring = string.Format("Server=localhost; database={0}; UID=root; password=asd123", databaseName);
+                string connstring = string.Format("Server=192.168.10.5;Port =3360; database={0}; UID=root; password=asd123", databaseName);
                 connection = new MySqlConnection(connstring);
             }
 
