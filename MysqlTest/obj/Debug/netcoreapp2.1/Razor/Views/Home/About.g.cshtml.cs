@@ -54,7 +54,7 @@ using MysqlTest.Models;
             WriteLiteral("<!DOCTYPE HTML>\n<html>\n\t");
             EndContext();
             BeginContext(24, 2147, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("head", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "c24f6f474773486392367bd58f4afc43", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("head", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "f00b1ed612914c728395ab9e20e3b74e", async() => {
                 BeginContext(30, 2134, true);
                 WriteLiteral(@"
 	<meta charset=""utf-8"">
@@ -133,7 +133,7 @@ using MysqlTest.Models;
             WriteLiteral("\n\t");
             EndContext();
             BeginContext(2173, 11556, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("body", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "4e44176a25e54ccfbccbe9b780e20b64", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("body", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "c78054f65cdc499db9904eb0375bb48d", async() => {
                 BeginContext(2179, 11543, true);
                 WriteLiteral(@"
 
