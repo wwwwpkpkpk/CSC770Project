@@ -33,6 +33,30 @@ namespace MysqlTest.Controllers
         {
             return View();
         }
+        public ActionResult Signup_success()
+        {
+            return View();
+        }
+        public ActionResult Signin_success()
+        {
+            return View();
+        }
+        public ActionResult Signout()
+        {
+            return View();
+        }
+        public ActionResult Account()
+        {
+            return View();
+        }
+        public ActionResult Staffnum()
+        {
+            return View();
+        }
+        public ActionResult Management()
+        {
+            return View();
+        }
         public ActionResult Order()
         {
             return View();
@@ -49,7 +73,6 @@ namespace MysqlTest.Controllers
         {
             return View();
         }
-
 
         //Get the registration form
         [HttpPost]
@@ -110,9 +133,54 @@ namespace MysqlTest.Controllers
                     cmdInsert.ExecuteNonQuery();
                 }
                 dbCon.Close();
-                return RedirectToAction("Signin");
+                return RedirectToAction("Signup_success");
                 
             }
+        }
+        
+        public ActionResult Signin(string newUsername, string newfpassword)
+        {
+            var dbCon = DBConnection.Instance();
+            dbCon.DatabaseName = "drunkencode";
+            dbCon.Open();
+            bool existing = false;
+
+            if (dbCon.IsConnect())
+            {
+                //Check email duplication
+                dbCon.Open();
+
+                string query = "SELECT username, fpassword FROM user_account where username= ?newUsername";
+                var cmd = new MySqlCommand(query, dbCon.Connection);
+                cmd.Parameters.AddWithValue("?newUsername", newUsername);
+                var reader = cmd.ExecuteReader();
+                Debug.WriteLine(reader.FieldCount);
+
+                while (reader.HasRows)
+                {
+                    while (reader.Read())
+                    {
+                        string estUsername = reader.GetString(0);
+                        if (newUsername == estUsername)
+                        {
+                            string estPassword = reader.GetString(1);
+
+                            if()//password
+                            existing = true;
+                            break;
+                        }
+                        else
+                        {
+                            TempData["testmsg"] = "No_exist";
+                            return RedirectToAction("Signin");
+                        }
+                    }
+                    reader.NextResult();
+                }
+                dbCon.Close();
+            }
+            return RedirectToAction("Signin_success");
+
         }
 
         public ActionResult Errors() {
