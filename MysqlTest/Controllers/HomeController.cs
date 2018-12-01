@@ -149,7 +149,7 @@ namespace MysqlTest.Controllers
             {
                 dbCon.Open();
 
-                string query = "SELECT username, fpassword FROM user_account where username= 'soohyeon'";
+                string query = "SELECT username, fpassword FROM user_account where username= 'newUsername'";
                 var cmd = new MySqlCommand(query, dbCon.Connection);
                 var reader = cmd.ExecuteReader();
                 Debug.WriteLine(reader.FieldCount);
