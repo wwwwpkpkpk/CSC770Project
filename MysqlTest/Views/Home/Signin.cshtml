@@ -55,9 +55,7 @@
 
 </head>
 <body>
-
     <div class="fh5co-loader"></div>
-
     <div id="page">
         <nav class="fh5co-nav" role="navigation">
             <div class="top-menu">
@@ -106,7 +104,7 @@
 
                         <div><h5>If you don't have an account click <a asp-area="" asp-controller="Home" asp-action="Signup">here</a> </h5></div>
 
-                        @using (Html.BeginForm())
+                        @using (Html.BeginForm("Signin", "Home", FormMethod.Post))
                         {
                             @if (String.Equals(TempData["testmsg"], "No_exist"))
                             {
@@ -116,7 +114,15 @@
                                 </script>
 
                             }
-                            @Html.ValidationSummary(true, "Login failed. Check your login details");
+                            @if (String.Equals(TempData["testmsg"], "No_pw"))
+                            {
+
+                                <script type="text/javascript">
+                                    alert("Not matched password! Please check it!");
+                                </script>
+
+                            }
+
                             <div class="row form-group">
                                 <div class="col-md-12">
                                     <label for="username">Username</label>

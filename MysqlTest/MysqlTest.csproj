@@ -314,6 +314,9 @@
     <Compile Remove="Data Access\mysqlContext_test.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Update="Views\Home\Signin_success.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
     <Content Update="Views\Home\Signup_success.cshtml">
       <Pack>$(IncludeRazorContentInPack)</Pack>
     </Content>
