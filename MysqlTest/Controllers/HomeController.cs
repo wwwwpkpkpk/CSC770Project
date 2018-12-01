@@ -149,8 +149,9 @@ namespace MysqlTest.Controllers
             {
                 dbCon.Open();
 
-                string query = "SELECT username, fpassword FROM user_account where username= 'newUsername'";
+                string query = "SELECT username, fpassword FROM user_account where username = ?newUsername";
                 var cmd = new MySqlCommand(query, dbCon.Connection);
+                cmd.Parameters.AddWithValue("?newUsername", newUsername);
                 var reader = cmd.ExecuteReader();
                 Debug.WriteLine(reader.FieldCount);
 
@@ -170,13 +171,11 @@ namespace MysqlTest.Controllers
                             else
                             {
                                 TempData["testmsg"] = "No_pw";
-                                return RedirectToAction("Signin");
                             }
                         }
                         else
                         {
                             TempData["testmsg"] = "No_exist";
-                            return RedirectToAction("Signin");
                         }
                     }
                     reader.NextResult();
