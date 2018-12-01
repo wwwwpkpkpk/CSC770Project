@@ -78,6 +78,7 @@ namespace MysqlTest.Controllers
         [HttpPost]
         public ActionResult Signup(string newUsername, string newEmail, string newPn1, string newPn2, string newPn3, string newFname, string newLname,string newPwd, string newRPwd)
         {
+            TempData["testmsg"] = "null";
             var dbCon = DBConnection.Instance();
             dbCon.DatabaseName = "drunkencode";
             bool duplicate = false;
@@ -95,7 +96,7 @@ namespace MysqlTest.Controllers
                     while (reader.Read())
                     {
                         string estUsername = reader.GetString(0);
-                        if (newUsername == estUsername)
+                        if (newUsername.Equals(estUsername))
                         {
                             duplicate = true;
                             break;
@@ -110,7 +111,7 @@ namespace MysqlTest.Controllers
                 TempData["testmsg"] = "username";
                 return RedirectToAction("Signup");
             }
-            else if(newPwd != newRPwd)
+            else if(newPwd.Equals(newRPwd) == false)
             {
                 TempData["testmsg"] = "password";
                 return RedirectToAction("Signup");
@@ -133,8 +134,7 @@ namespace MysqlTest.Controllers
                     cmdInsert.ExecuteNonQuery();
                 }
                 dbCon.Close();
-                return RedirectToAction("Signup_success");
-                
+                return RedirectToAction("Signup_success"); 
             }
         }
 
@@ -159,10 +159,10 @@ namespace MysqlTest.Controllers
                     while (reader.Read())
                     {
                         string estUsername = reader.GetString(0);
-                        if (newUsername == estUsername)
+                        if (newUsername.Equals(estUsername))
                         {
                             string estPassword = reader.GetString(1);       
-                            if (newfpassword == estPassword) //password
+                            if (newfpassword.Equals(estPassword)) //password
                             {
                                 existing = true;
                                 break;
