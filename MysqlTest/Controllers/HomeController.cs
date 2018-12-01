@@ -137,22 +137,20 @@ namespace MysqlTest.Controllers
                 
             }
         }
-        
+
+        [HttpPost]
         public ActionResult Signin(string newUsername, string newfpassword)
         {
             var dbCon = DBConnection.Instance();
             dbCon.DatabaseName = "drunkencode";
-            dbCon.Open();
             bool existing = false;
 
             if (dbCon.IsConnect())
             {
-                //Check email duplication
                 dbCon.Open();
 
-                string query = "SELECT username, fpassword FROM user_account where username= ?newUsername";
+                string query = "SELECT username, fpassword FROM user_account where username= 'soohyeon'";
                 var cmd = new MySqlCommand(query, dbCon.Connection);
-                cmd.Parameters.AddWithValue("?newUsername", newUsername);
                 var reader = cmd.ExecuteReader();
                 Debug.WriteLine(reader.FieldCount);
 
@@ -163,11 +161,17 @@ namespace MysqlTest.Controllers
                         string estUsername = reader.GetString(0);
                         if (newUsername == estUsername)
                         {
-                            string estPassword = reader.GetString(1);
-
-                            if()//password
-                            existing = true;
-                            break;
+                            string estPassword = reader.GetString(1);       
+                            if (newfpassword == estPassword) //password
+                            {
+                                existing = true;
+                                break;
+                            }
+                            else
+                            {
+                                TempData["testmsg"] = "No_pw";
+                                return RedirectToAction("Signin");
+                            }
                         }
                         else
                         {
@@ -179,8 +183,14 @@ namespace MysqlTest.Controllers
                 }
                 dbCon.Close();
             }
-            return RedirectToAction("Signin_success");
-
+            if(existing == true)
+            {
+                return RedirectToAction("Signin_success");
+            }
+            else
+            {
+                return RedirectToAction("Signin");
+            }
         }
 
         public ActionResult Errors() {

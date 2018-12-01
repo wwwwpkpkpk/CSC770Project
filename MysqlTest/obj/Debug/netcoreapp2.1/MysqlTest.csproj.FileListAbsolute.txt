@@ -145,3 +145,5 @@ C:\Users\CHOI's\iCloudDrive\Documents\CSC770Project\MysqlTest\obj\Debug\netcorea
 C:\Users\CHOI's\iCloudDrive\Documents\CSC770Project\MysqlTest\obj\Debug\netcoreapp2.1\MysqlTest.pdb
 C:\Users\CHOI's\iCloudDrive\Documents\CSC770Project\MysqlTest\obj\Debug\netcoreapp2.1\MysqlTest.csproj.CopyComplete
 C:\Users\CHOI's\iCloudDrive\Documents\CSC770Project\MysqlTest\obj\Debug\netcoreapp2.1\MysqlTest.csprojAssemblyReference.cache
+C:\Users\CHOI's\iCloudDrive\Documents\CSC770Project\MysqlTest\obj\Debug\netcoreapp2.1\Razor\Views\Home\Signup_success.g.cshtml.cs
+C:\Users\CHOI's\iCloudDrive\Documents\CSC770Project\MysqlTest\obj\Debug\netcoreapp2.1\Razor\Views\Home\signin_success.g.cshtml.cs
